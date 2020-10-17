@@ -5,6 +5,6 @@ export default function Score() {
   const { state: { score } } = useContext(PlayfieldContext)
 
   return (
-    <div>{score}</div>
+    <div>Score: {score}</div>
   )
 }

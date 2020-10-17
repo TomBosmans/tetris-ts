@@ -22,6 +22,6 @@ export default function Preview() {
   }
 
   return (
-    <Canvas draw={draw} width={size} height={size} />
+    <Canvas draw={draw} width={size} height={size} delay={2}/>
   )
 }

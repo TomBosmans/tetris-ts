@@ -1,10 +1,8 @@
 import React from "react"
-import Playfield from "./components/Playfield"
+import Game from "./components/Game"
 
-function App() {
+export default function App() {
   return (
-    <Playfield />
+    <Game />
   )
 }
-
-export default App

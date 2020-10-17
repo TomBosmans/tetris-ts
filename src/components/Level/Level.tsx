@@ -5,6 +5,6 @@ export default function Level() {
   const { state: { level } } = useContext(PlayfieldContext)
 
   return (
-    <div>{level}</div>
+    <div>Level: {level}</div>
   )
 }
