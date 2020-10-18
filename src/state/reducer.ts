@@ -9,11 +9,11 @@ const moveBlockDown = (state: PlayfieldState): PlayfieldState => {
 
   if (canMove) return { ...state, currentBlock: currentBlock }
 
-  const completedRowsCount = totalCompletedRows(state.grid)
-  const newGrid = removeCompletedRows(restBlock(state.currentBlock, state.grid))
+  const grid = restBlock(state.currentBlock, state.grid)
+  const completedRowsCount = totalCompletedRows(grid)
   return {
     ...state,
-    grid: newGrid,
+    grid: removeCompletedRows(grid),
     currentBlock: state.nextBlock,
     nextBlock: randomBlock(),
     score: increaseScore(state, completedRowsCount)
