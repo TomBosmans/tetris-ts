@@ -1,13 +1,12 @@
 import React, { useContext } from "react"
 import Canvas from "src/components/Canvas"
-import { COLUMNS, ROWS, CELL_SIZE, PADDING, CELL_COLORS, BLOCKS, ACTION, CELL } from "src/constants"
+import { COLUMNS, ROWS, CELL_SIZE, PADDING, CELL_COLORS, BLOCKS, ACTION, CELL, SPEED_PER_LEVEL } from "src/constants"
 import { Cell } from "src/types"
 import { PlayfieldContext } from "src/PlayfieldProvider"
 import { useInterval } from "src/hooks"
 
 export default function Arena() {
-  const { state, dispatch } = useContext(PlayfieldContext)
-  const { grid, currentBlock } = state
+  const { state: { grid, currentBlock, level, autoDrop }, dispatch } = useContext(PlayfieldContext)
 
   const width = COLUMNS * (CELL_SIZE + PADDING)
   const height = ROWS * (CELL_SIZE + PADDING)
@@ -43,7 +42,9 @@ export default function Arena() {
     drawCurrentBlock(context)
   }
 
-  useInterval(() => dispatch({ type: ACTION.MOVE_BLOCK_DOWN }), 1000)
+  const maxSpeed = SPEED_PER_LEVEL[SPEED_PER_LEVEL.length - 1]
+  const delay = autoDrop ? (SPEED_PER_LEVEL[level] || maxSpeed)/60 * 1000 : null
+  useInterval(() => dispatch({ type: ACTION.MOVE_BLOCK_DOWN }), delay)
 
   return (
     <Canvas draw={draw} width={width} height={height} delay={2} />

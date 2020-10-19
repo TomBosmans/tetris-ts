@@ -13,13 +13,15 @@ export type Action = {
   payload?: Record<any, any>
 }
 
-export type ActionType = "MOVE_BLOCK_DOWN" | "MOVE_BLOCK_LEFT" | "MOVE_BLOCK_RIGHT" | "ROTATE_BLOCK_LEFT" | "ROTATE_BLOCK_RIGHT"
+export type ActionType = "MOVE_BLOCK_DOWN" | "MOVE_BLOCK_LEFT" | "MOVE_BLOCK_RIGHT" | "ROTATE_BLOCK_LEFT" | "ROTATE_BLOCK_RIGHT" | "START_AUTO_DROP" | "STOP_AUTO_DROP"
 
 export type Keybindings = Record<number, ActionType>
 
 export type PlayfieldState = {
   level: number
   score: number
+  lines: number
+  autoDrop: boolean
   grid: Grid
   currentBlock: Block
   nextBlock: Block

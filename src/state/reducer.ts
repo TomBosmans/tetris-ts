@@ -11,8 +11,13 @@ const moveBlockDown = (state: PlayfieldState): PlayfieldState => {
 
   const grid = restBlock(state.currentBlock, state.grid)
   const completedRowsCount = totalCompletedRows(grid)
+  const lines = state.lines + completedRowsCount
+  const newLevel = Math.floor(lines/10)
+  const level = state.level > newLevel ? state.level : newLevel
   return {
     ...state,
+    lines: lines,
+    level: level,
     grid: removeCompletedRows(grid),
     currentBlock: state.nextBlock,
     nextBlock: randomBlock(),
@@ -60,6 +65,10 @@ export default function reducer(state: PlayfieldState, action: Action) {
       return rotateBlockLeft(state)
     case ACTION.ROTATE_BLOCK_RIGHT:
       return rotateBlockRight(state)
+    case ACTION.START_AUTO_DROP:
+      return { ...state, autoDrop: true }
+    case ACTION.STOP_AUTO_DROP:
+      return { ...state, autoDrop: false }
     default:
       return state
   }

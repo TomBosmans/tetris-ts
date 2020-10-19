@@ -7,6 +7,8 @@ import { ACTION } from "./constants"
 const initialState: PlayfieldState = {
   level: 0,
   score: 0,
+  lines: 0,
+  autoDrop: true,
   grid: generateGrid(),
   currentBlock: randomBlock(),
   nextBlock: randomBlock(),
