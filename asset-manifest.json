@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/tetris-ts/static/js/main.cfa5d64d.chunk.js",
-    "main.js.map": "/tetris-ts/static/js/main.cfa5d64d.chunk.js.map",
+    "main.js": "/tetris-ts/static/js/main.a93a7da9.chunk.js",
+    "main.js.map": "/tetris-ts/static/js/main.a93a7da9.chunk.js.map",
     "runtime-main.js": "/tetris-ts/static/js/runtime-main.663ed2ab.js",
     "runtime-main.js.map": "/tetris-ts/static/js/runtime-main.663ed2ab.js.map",
     "static/js/2.26f3ac83.chunk.js": "/tetris-ts/static/js/2.26f3ac83.chunk.js",
     "static/js/2.26f3ac83.chunk.js.map": "/tetris-ts/static/js/2.26f3ac83.chunk.js.map",
     "index.html": "/tetris-ts/index.html",
-    "precache-manifest.1594760badbc0b58b9d8fe3f19c212b2.js": "/tetris-ts/precache-manifest.1594760badbc0b58b9d8fe3f19c212b2.js",
+    "precache-manifest.037b96ba0b9f3295ee498dfaeefc5467.js": "/tetris-ts/precache-manifest.037b96ba0b9f3295ee498dfaeefc5467.js",
     "service-worker.js": "/tetris-ts/service-worker.js",
     "static/js/2.26f3ac83.chunk.js.LICENSE.txt": "/tetris-ts/static/js/2.26f3ac83.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.663ed2ab.js",
     "static/js/2.26f3ac83.chunk.js",
-    "static/js/main.cfa5d64d.chunk.js"
+    "static/js/main.a93a7da9.chunk.js"
   ]
 }
