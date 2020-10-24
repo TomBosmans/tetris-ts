@@ -2,8 +2,10 @@ import { Cell } from "src/types"
 
 export const COLUMNS = 10
 export const ROWS = 18
-export const CELL_SIZE = 50
+export const CELL_SIZE = 45
 export const PADDING = 2
+export const WIDTH = COLUMNS * (CELL_SIZE + PADDING) - PADDING
+export const HEIGHT = ROWS * (CELL_SIZE + PADDING) - PADDING
 export const SCORES_PER_LINES = [0, 40, 100, 300, 1200]
 export const SPEED_PER_LEVEL = [
   48, 43, 38, 33, 28, 23, 18, 13,  8,  6,

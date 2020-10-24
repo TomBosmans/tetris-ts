@@ -1,15 +1,12 @@
 import React, { useContext } from "react"
 import Canvas from "src/components/Canvas"
-import { COLUMNS, ROWS, CELL_SIZE, PADDING, CELL_COLORS, BLOCKS, ACTION, CELL, SPEED_PER_LEVEL } from "src/constants"
+import { COLUMNS, ROWS, CELL_SIZE, PADDING, CELL_COLORS, BLOCKS, ACTION, CELL, SPEED_PER_LEVEL, WIDTH, HEIGHT } from "src/constants"
 import { Cell } from "src/types"
 import { PlayfieldContext } from "src/PlayfieldProvider"
 import { useInterval } from "src/hooks"
 
 export default function Arena() {
   const { state: { grid, currentBlock, level, autoDrop }, dispatch } = useContext(PlayfieldContext)
-
-  const width = COLUMNS * (CELL_SIZE + PADDING)
-  const height = ROWS * (CELL_SIZE + PADDING)
 
   const drawGrid = (context: CanvasRenderingContext2D) => {
     for (let x = 0, i = 0; i < COLUMNS; x+=CELL_SIZE + PADDING, i++) {
@@ -37,7 +34,7 @@ export default function Arena() {
   }
 
   const draw = (context: CanvasRenderingContext2D) => {
-    context.clearRect(0, 0, width, height);
+    context.clearRect(0, 0, WIDTH, HEIGHT);
     drawGrid(context)
     drawCurrentBlock(context)
   }
@@ -47,6 +44,6 @@ export default function Arena() {
   useInterval(() => dispatch({ type: ACTION.MOVE_BLOCK_DOWN }), delay)
 
   return (
-    <Canvas draw={draw} width={width} height={height} delay={2} />
+    <Canvas draw={draw} width={WIDTH} height={HEIGHT} delay={2} />
   )
 }
