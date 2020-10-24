@@ -4,9 +4,10 @@ import { COLUMNS, ROWS, CELL_SIZE, PADDING, CELL_COLORS, BLOCKS, ACTION, CELL, S
 import { Cell } from "src/types"
 import { PlayfieldContext } from "src/PlayfieldProvider"
 import { useInterval } from "src/hooks"
+import { GameOverStyle } from "src/styled"
 
 export default function Arena() {
-  const { state: { grid, currentBlock, level, autoDrop }, dispatch } = useContext(PlayfieldContext)
+  const { state: { grid, currentBlock, level, autoDrop, gameOver }, dispatch } = useContext(PlayfieldContext)
 
   const drawGrid = (context: CanvasRenderingContext2D) => {
     for (let x = 0, i = 0; i < COLUMNS; x+=CELL_SIZE + PADDING, i++) {
@@ -43,6 +44,7 @@ export default function Arena() {
   const delay = autoDrop ? (SPEED_PER_LEVEL[level] || maxSpeed)/60 * 1000 : null
   useInterval(() => dispatch({ type: ACTION.MOVE_BLOCK_DOWN }), delay)
 
+  if (gameOver) return <GameOverStyle>GAME OVER</GameOverStyle>
   return (
     <Canvas draw={draw} width={WIDTH} height={HEIGHT} delay={2} />
   )

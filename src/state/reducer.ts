@@ -2,27 +2,33 @@ import { PlayfieldState, Action } from "src/types"
 import { ACTION, BLOCKS } from "src/constants"
 import { canBlockMove, restBlock, randomBlock, removeCompletedRows, totalCompletedRows, increaseScore } from "src/lib"
 
-const moveBlockDown = (state: PlayfieldState): PlayfieldState => {
-  const offsetY = state.currentBlock.offsetY + 1
-  const currentBlock = { ...state.currentBlock, offsetY: offsetY }
-  const canMove = canBlockMove(currentBlock, state.grid)
-
-  if (canMove) return { ...state, currentBlock: currentBlock }
-
+const setNextBlock = (state: PlayfieldState): PlayfieldState => {
   const grid = restBlock(state.currentBlock, state.grid)
   const completedRowsCount = totalCompletedRows(grid)
   const lines = state.lines + completedRowsCount
   const newLevel = Math.floor(lines/10)
   const level = state.level > newLevel ? state.level : newLevel
+  const currentBlock = state.nextBlock
+  const gameOver = !canBlockMove(currentBlock, grid)
+
   return {
     ...state,
     lines: lines,
     level: level,
     grid: removeCompletedRows(grid),
-    currentBlock: state.nextBlock,
+    currentBlock: currentBlock,
     nextBlock: randomBlock(),
-    score: increaseScore(state, completedRowsCount)
+    score: increaseScore(state, completedRowsCount),
+    gameOver: gameOver,
   }
+}
+
+const moveBlockDown = (state: PlayfieldState): PlayfieldState => {
+  const offsetY = state.currentBlock.offsetY + 1
+  const currentBlock = { ...state.currentBlock, offsetY: offsetY }
+  const canMove = canBlockMove(currentBlock, state.grid)
+
+  return canMove ? { ...state, currentBlock: currentBlock } : setNextBlock(state)
 }
 
 const moveBlockLeft = (state: PlayfieldState): PlayfieldState => {

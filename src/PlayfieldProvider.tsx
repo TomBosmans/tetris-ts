@@ -9,6 +9,7 @@ const initialState: PlayfieldState = {
   score: 0,
   lines: 0,
   autoDrop: true,
+  gameOver: false,
   grid: generateGrid(),
   currentBlock: randomBlock(),
   nextBlock: randomBlock(),

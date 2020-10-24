@@ -3,7 +3,7 @@ import { PlayfieldContext } from "src/PlayfieldProvider"
 import { ACTION } from "src/constants"
 
 export default function Keybindings() {
-  const { state: { keybindings }, dispatch } = useContext(PlayfieldContext)
+  const { state: { keybindings, gameOver }, dispatch } = useContext(PlayfieldContext)
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -20,13 +20,13 @@ export default function Keybindings() {
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
       if (keybindings[event.keyCode] === ACTION.MOVE_BLOCK_DOWN) {
-        dispatch({ type: ACTION.START_AUTO_DROP })
+        !gameOver && dispatch({ type: ACTION.START_AUTO_DROP })
       }
     }
 
     window.addEventListener("keyup", handleKey);
     return () => window.removeEventListener("keyup", handleKey)
-  }, [keybindings, dispatch])
+  }, [keybindings, dispatch, gameOver])
 
   return (
     <></>

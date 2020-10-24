@@ -59,3 +59,13 @@ export const DetailsStyle = styled.div`
     padding: 5px;
   }
 `
+export const GameOverStyle = styled.div`
+  height: 100%;
+
+  font-size: 2em;
+  color: #bf616a;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

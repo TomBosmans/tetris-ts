@@ -22,6 +22,7 @@ export type PlayfieldState = {
   score: number
   lines: number
   autoDrop: boolean
+  gameOver: boolean
   grid: Grid
   currentBlock: Block
   nextBlock: Block
