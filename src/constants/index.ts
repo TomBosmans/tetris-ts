@@ -23,7 +23,7 @@ export enum CELL {
 }
 
 export const CELL_COLORS = {
-  " ": "#e5e9f0",
+  " ": "#434c5e",
   "o": "#bf616a",
   "s": "#d08770",
   "z": "#ebcb8b",
